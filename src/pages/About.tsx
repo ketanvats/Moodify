@@ -45,7 +45,7 @@ const About: React.FC = () => {
           Moodify
         </h1>
         <p className="text-lg text-gray-300 max-w-3xl mx-auto">
-          Your personal music discovery platform, powered by AI. Dive into a seamless listening experience with dynamic visuals and endless tracks.
+          Your personal music discovery platform. Dive into a seamless listening experience with dynamic visuals and endless tracks.
         </p>
       </div>
 
@@ -124,5 +124,6 @@ const About: React.FC = () => {
     </div>
   );
 };
+
 
 export default About;
