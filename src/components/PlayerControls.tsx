@@ -12,7 +12,7 @@ import {
   PlusIcon,
   ArrowsPointingOutIcon,
   ArrowsPointingInIcon,
-  MicrophoneIcon,
+  ClipboardDocumentListIcon,
 } from '@heroicons/react/24/solid';
 
 // Helper to format time from seconds to M:SS
@@ -146,7 +146,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
               />
             </div>
 
-            <button onClick={onToggleLyrics} title="Toggle Lyrics" className={`p-2 rounded-full transition-all active:scale-90 ${isLyricsViewOpen ? 'bg-white/25' : 'hover:bg-white/10'}`}><MicrophoneIcon className="h-6 w-6" /></button>
+            <button onClick={onToggleLyrics} title="Toggle Lyrics" className={`p-2 rounded-full transition-all active:scale-90 ${isLyricsViewOpen ? 'bg-white/25' : 'hover:bg-white/10'}`}><ClipboardDocumentListIcon className="h-6 w-6" /></button>
             <button onClick={toggleFullScreen} title="Exit Fullscreen" className="p-2 rounded-full hover:bg-white/10 transition-all active:scale-90"><ArrowsPointingInIcon className="h-6 w-6" /></button>
           </div>
         </div>
@@ -177,7 +177,7 @@ const PlayerControls: React.FC<PlayerControlsProps> = ({
               <PlusIcon className="h-5 w-5" />
             </button>
             <button onClick={onToggleLyrics} title="Toggle Lyrics" className={`hidden md:block p-2 rounded-full transition-all active:scale-90 ${isLyricsViewOpen ? 'bg-white/25' : 'hover:bg-white/10'}`}>
-              <MicrophoneIcon className="h-5 w-5" />
+              <ClipboardDocumentListIcon className="h-5 w-5" />
             </button>
             <button onClick={onToggleQueue} title="Queue" className="hidden md:block p-2 rounded-full hover:bg-white/10 transition-all active:scale-90">
               <ListBulletIcon className="h-5 w-5" />
