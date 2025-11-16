@@ -86,6 +86,7 @@ function App() {
   const [trendingRegion, setTrendingRegion] = useState('IN');
   const [isLyricsViewOpen, setIsLyricsViewOpen] = useState(false);
   const [lyrics, setLyrics] = useState<LyricLine[]>([]);
+  const [isSearchingLyrics, setIsSearchingLyrics] = useState(false);
   const [playerBgPalette, setPlayerBgPalette] = useState<[number, number, number][] | null>(null);
   const [nextPageToken, setNextPageToken] = useState<string | null>(null);
   const [isFetchingMore, setIsFetchingMore] = useState(false);
@@ -302,6 +303,34 @@ function App() {
       fetchLyrics();
     }
   }, [currentSong]);
+
+  // --- Manual Lyrics Search ---
+  const handleManualLyricSearch = async (trackName: string, artistName: string) => {
+    if (!trackName || !artistName) return;
+
+    setIsSearchingLyrics(true);
+    setLyrics([]); // Clear previous lyrics or "not found" state
+
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/lyrics?trackName=${encodeURIComponent(trackName)}&artistName=${encodeURIComponent(artistName)}`);
+
+      if (response.ok) {
+        const data = await response.json();
+        if (data.syncedLyrics) {
+          setLyrics(parseSyncedLyrics(data.syncedLyrics));
+        } else {
+          setLyrics([]); // API success but no lyrics
+        }
+      } else {
+        setLyrics([]); // API returned an error (e.g., 404)
+      }
+    } catch (error) {
+      console.error("Manual lyric search failed:", error);
+      setLyrics([]);
+    } finally {
+      setIsSearchingLyrics(false);
+    }
+  };
 
   // --- Search Functionality ---
   const handleSearch = () => {
@@ -901,6 +930,8 @@ function App() {
           onClose={toggleLyricsView}
           playerBackgroundStyle={playerBackgroundStyle}
           onSeek={handleSeek}
+          isSearchingLyrics={isSearchingLyrics}
+          onManualLyricSearch={handleManualLyricSearch}
         />
       )}
 
