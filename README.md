@@ -6,12 +6,6 @@
 	<img src="screenshot/home-discovery.jpeg" alt="Moodify home screen with music discovery cards and player controls" width="900">
 </p>
 
-<p align="center">
-	<a href="https://github.com/ketanvats/Moodify">Repository</a>
-	·
-	<a href="https://moodify-music-player.azurewebsites.net/about">Live demo</a>
-</p>
-
 Moodify combines regional music trends, search, mood-based playlist generation, synchronized lyrics, and a persistent YouTube-powered player in one focused interface. It is designed to make music discovery feel personal without getting in the way of listening.
 
 ## Highlights
@@ -149,12 +143,6 @@ From `backend/`:
 ## Deployment Notes
 
 Build the frontend with `npm run build` and deploy the generated `dist/` directory to your static hosting provider. Deploy the `backend/` service separately, set the same environment variables in production, and update `FRONTEND_URL`, `BACKEND_URL`, the Google OAuth callback, and CORS configuration for the deployed domains.
-
-## Contributors
-
-- Ketan Vats
-- Himanshu Rai
-- Bhushan Sah
 
 ## License
 
